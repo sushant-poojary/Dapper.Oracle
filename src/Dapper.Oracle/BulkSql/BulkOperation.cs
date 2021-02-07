@@ -76,7 +76,7 @@ namespace Dapper.Oracle.BulkSql
             foreach (var map in mapping)
             {
                 var values = map.Property != null ? obj.Select(map.Property).ToArray() : null;
-                var dbType = map.DbType ?? OracleMapper.GuessType(obj.First().GetType());
+                var dbType = map.DbType ?? OracleMapper.GuessType(values.First().GetType());
 
                 parameters.Add(
                     Clean(map.Name),
